@@ -27,4 +27,10 @@ public class CalendarioPersonalEntity {
 
     private calendarioAgenda
      */
+
+    @PrePersist
+    void alGuardar(){
+        if (idCalendarioPersonal == null)
+            idCalendarioPersonal = UUID.randomUUID();
+    }
 }
