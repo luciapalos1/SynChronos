@@ -1,6 +1,7 @@
 package com.SynChronos.features.agenda.model;
 
 import com.SynChronos.features.turno.model.TurnoEntity;
+import com.SynChronos.features.usuario.model.UsuarioEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -18,7 +19,7 @@ public class AgendaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "id", nullable = false,unique = true)
+    @Column(name = "agenda_id", nullable = false,unique = true)
     private UUID idAgenda;
 
     @Column(nullable = false)
@@ -27,6 +28,10 @@ public class AgendaEntity {
     @Column(nullable = false)
     private Boolean activo;
 
-    @OneToMany
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private UsuarioEntity usuario;
+
+    @OneToMany(mappedBy = "agenda")
     private List<TurnoEntity> turnos;
 }

@@ -2,11 +2,13 @@ package com.SynChronos.features.turno.model;
 
 import com.SynChronos.features.agenda.model.AgendaEntity;
 import com.SynChronos.features.turno.Estado;
+import com.SynChronos.features.usuario.model.UsuarioEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -19,13 +21,13 @@ public class TurnoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "turno_id", nullable = false, unique = true)
     private UUID idTurno;
 
-    @Column(name = "Horario entrada",nullable = false)
+    @Column(name = "horario_entrada",nullable = false)
     private LocalDateTime horarioEntrada;
 
-    @Column(name = "Horario salida",nullable = false)
+    @Column(name = "horario_salida",nullable = false)
     private LocalDateTime horarioSalida;
 
     @Column(nullable = false)
@@ -35,17 +37,24 @@ public class TurnoEntity {
     @Enumerated(EnumType.STRING)
     private Estado estado;
 
-    @Column(name = "Cupo maximo", nullable = false)
+    @Column(name = "cupo_maximo", nullable = false)
     private Integer cupoMaximo;
 
-    @Column(name = "Cupo mamo", nullable = false)
+    @Column(name = "cupo_minimo", nullable = false)
     private Integer cupoMinimo;
 
-    @Column(name = "Edad maxima",nullable = false)
+    @Column(name = "edad_maxima",nullable = false)
     private Integer edadMaxima;
 
-    @Column(name = "Edad minima",nullable = false)
+    @Column(name = "edad_minima",nullable = false)
     private Integer edadMinima;
+
+    @ManyToOne
+    @JoinColumn(name = "agenda_id")
+    private AgendaEntity agenda;
+
+    @ManyToMany
+    private List<UsuarioEntity> participantes;
 
 
 
