@@ -14,10 +14,10 @@ import java.util.UUID;
 @Setter
 @Builder
 public class CredencialEntity {
-    @Id
+    /*@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-
+    */
     private UUID idCredencial;
 
     @Column(nullable = false)
