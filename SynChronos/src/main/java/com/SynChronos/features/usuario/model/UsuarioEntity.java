@@ -1,5 +1,7 @@
 package com.SynChronos.features.usuario.model;
 
+import com.SynChronos.features.agenda.model.AgendaEntity;
+import com.SynChronos.features.turno.model.TurnoEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -41,4 +43,11 @@ public class UsuarioEntity {
         if (activo == null)
             activo = true;
     }
+
+    @OneToMany(mappedBy = "usuario")
+    private List<AgendaEntity> agendas;
+
+
+    @ManyToMany(mappedBy = "participantes")
+    private List<TurnoEntity>  turnos;
 }
