@@ -1,13 +1,11 @@
-version: '3.8'
-
 services:
   postgres:
     image: postgres:15-alpine
     container_name: mi_servidor_postgres
     restart: always
     environment:
-      POSTGRES_USER: ${USERNAME}
-      POSTGRES_PASSWORD: ${PASSWORD}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DATABASE}
     ports:
       - "5432:5432"
