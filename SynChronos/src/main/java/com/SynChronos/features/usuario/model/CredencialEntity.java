@@ -26,7 +26,7 @@ public class CredencialEntity {
     @Column(nullable = false)
     private String contrasenia;
 
-    private LocalDate fecha_Nacimiento;
+    private LocalDate fechaNacimiento;
 
     private String dni;
 
